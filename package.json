@@ -1,62 +1,81 @@
 {
-	"name": "nuntiumblog",
-	"version": "1.0.0",
-	"description": "Education project",
-	"scripts": {
-		"dev": "webpack serve --mode development",
-		"build": "webpack --mode production",
-		"deploy": "gh-pages -d dist",
-		"lint": "eslint ./srs",
-		"lint:fix": "eslint ./src --fix --color"
-	},
-	"author": "",
-	"license": "MIT",
-	"devDependencies": {
-		"@babel/core": "^7.17.10",
-		"@babel/preset-env": "^7.17.10",
-		"@squoosh/lib": "^0.4.0",
-		"autoprefixer": "^10.4.7",
-		"babel-loader": "^8.2.5",
-		"clean-webpack-plugin": "^4.0.0",
-		"css-loader": "^6.7.1",
-		"css-minimizer-webpack-plugin": "^3.4.1",
-		"eslint": "^8.2.0",
-		"eslint-config-airbnb": "^19.0.4",
-		"eslint-config-airbnb-base": "^15.0.0",
-		"eslint-plugin-import": "^2.25.3",
-		"eslint-plugin-prettier": "^4.0.0",
-		"file-loader": "^6.2.0",
-		"html-loader": "^3.1.0",
-		"husky": "^8.0.1",
-		"image-minimizer-webpack-plugin": "^3.2.3",
-		"lint-staged": "^12.4.1",
-		"postcss-loader": "^6.2.1",
-		"prettier": "^2.6.2",
-		"pug-plugin": "^2.3.0",
-		"sass": "^1.51.0",
-		"sass-loader": "^12.6.0",
-		"webpack": "^5.72.0",
-		"webpack-cli": "^4.9.2",
-		"webpack-dev-server": "^4.9.0"
-	},
-	"dependencies": {
-		"gh-pages": "^4.0.0",
-		"pug-walk": "^2.0.0"
-	},
-	"browerslist": [
-		"defaults",
-		"not IE 11",
-		"maintained node versions"
-	],
-	"husky": {
-		"hooks": {
-			"pre-commit": "lint-staged"
-		}
-	},
-	"lint-staged": {
-		"*.js": [
-			"npm run lint:fix",
-			"git add"
-		]
-	}
+  "name": "nuntiumblog",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "sideEffects": [
+    "**/*.css",
+    "**/*.scss",
+    "./src/index.js",
+    "./src/Routes.js",
+    "./src/view.js"
+  ],
+  "scripts": {
+    "dev": "webpack serve --mode development --open",
+    "build": "webpack --mode production",
+    "deploy": "gh-pages -d dist",
+    "lint": "eslint \"**/*.js\"",
+    "lint:fix": "eslint \"**/*.js\" --fix --color"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Executioner34/Nuntium_Blog.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Executioner34/Nuntium_Blog/issues"
+  },
+  "homepage": "https://github.com/Executioner34/Nuntium_Blog#readme",
+  "devDependencies": {
+    "@babel/core": "^7.17.10",
+    "@babel/plugin-transform-runtime": "^7.18.5",
+    "@babel/preset-env": "^7.17.10",
+    "@squoosh/lib": "^0.4.0",
+    "autoprefixer": "^10.4.7",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.2.5",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.7.1",
+    "css-minimizer-webpack-plugin": "^3.4.1",
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-prettier": "^4.0.0",
+    "favicons": "^6.2.2",
+    "favicons-webpack-plugin": "^5.0.2",
+    "html-loader": "^3.1.0",
+    "html-webpack-plugin": "^5.5.0",
+    "husky": "^8.0.1",
+    "image-minimizer-webpack-plugin": "^3.2.3",
+    "lint-staged": "^12.4.1",
+    "mini-css-extract-plugin": "^2.6.0",
+    "postcss": "^8.4.14",
+    "postcss-loader": "^6.2.1",
+    "prettier": "^2.6.2",
+    "sass": "^1.51.0",
+    "sass-loader": "^12.6.0",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.9.0"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.18.3",
+    "gh-pages": "^4.0.0",
+    "handlebars": "^4.7.7",
+    "page": "^1.11.6",
+    "postcss-scss": "^4.0.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run lint:fix",
+      "git add"
+    ]
+  }
 }

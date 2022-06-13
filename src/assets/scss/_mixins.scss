@@ -1,0 +1,26 @@
+@use "sass:math";
+
+@mixin titleFont {
+    font-family: 'Libre Baskerville';
+    font-weight: 700;
+    font-size: calcFluidFontSize(18, 33, 480, 1366, );
+    color: #000000;
+    line-height: 150%;
+}
+
+@mixin textFont {
+    font-family: 'Open Sans';
+    font-weight: 400;
+    font-size: calcFluidFontSize(14, 16, 480, 1366, );
+    color: #000000;
+    line-height: 150%;
+}
+
+@function calcFluidFontSize($f-min, $f-max, $v-min, $v-max, $units: px) {
+    $k: math.div($f-max - $f-min, $v-max - $v-min);
+    $b: $f-min - $k * $v-min;
+  
+    $b: $b + $units;
+  
+    @return calc( #{$k} * 100vw + #{$b} );
+  }

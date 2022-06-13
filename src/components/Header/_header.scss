@@ -1,0 +1,53 @@
+@import '../../assets/scss/mixins';
+
+.header__wrapper {
+    display: flex;
+    .header__link {
+        text-decoration: none;
+    }
+    .header__logo {
+        width: 58px;
+        height: 58px;
+        margin-right: 171px;
+        background-color: #1C1C1C;
+        &::before {
+            content: 'nu';
+            @include titleFont;
+            font-size: 30px;
+            line-height: 37px;
+            color: #FFFFFF;
+            position: relative;
+            top: 1rem;
+            left: 1rem;
+        }
+        &::after {
+            content: 'ntium.';
+            @include titleFont;
+            font-size: 30px;
+            line-height: 37px;
+            position: relative;
+            top: 1rem;
+            left: 1rem;
+        }
+    }
+    .header__nav {
+    }
+}
+
+.nav__list {
+    display: flex;
+    .nav__item {
+        margin-right: 21px;
+        list-style-type: none;
+    }
+    .nav__link {
+        @include titleFont;
+        font-size: calcFluidFontSize(20, 20, 480, 1366);
+        font-weight: 400;
+        line-height: 25px;
+        text-decoration: none;
+        &:active, &--active {
+            font-weight: 700;
+        }
+    }
+}

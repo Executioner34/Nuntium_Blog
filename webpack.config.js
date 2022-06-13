@@ -1,139 +1,86 @@
-const pugPlugin = require('pug-plugin')
-const path = require('path')
-const autoPrefixer = require('autoprefixer')
+const path = require('path');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const FaviconWebpackPlugin = require('favicons-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
-const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
 
 module.exports = {
-	entry: './src/index.pug',
+	entry: './src/index.js',
 	output: {
 		filename: '[name].[hash].js',
-		path: path.resolve(__dirname + '/dist'),
-		publicPath: 'Nuntium_Blog',
-	},
-	resolve: {
-		alias: {
-			Images: path.join(__dirname, './src/assets/images'),
-			Fonts: path.join(__dirname, './src/assets/fonts/'),
-			Favicon: path.join(__dirname, './src/assets/favicon'),
-		},
+		path: __dirname + '/dist',
+		publicPath: '/Nuntium_Blog/',
 	},
 	devServer: {
 		static: {
-			directory: path.join(__dirname, './src'),
-			watch: true, // <--
+			directory: path.join(__dirname, './dist'),
+			watch: true,
 		},
 		devMiddleware: {
-			writeToDisk: true, // <--
+			writeToDisk: true,
 		},
-		open: ['main.html'],
+		open: true,
 		hot: true,
-		port: 9000,
+		port: 3000,
+		
 	},
-	plugins: [
-		new pugPlugin({
-			modules: [
-				pugPlugin.extractCss({
-					filename: '[name].[contenthash:8].css',
-				}),
-			],
-		}),
-		new CssMinimizerPlugin(),
-		new CleanWebpackPlugin(),
-		// new copyPlugin({
-		// 	patterns: [{ from: './src/assets', to: path.join(__dirname, './dist/images') }],
-		// }),
-	],
 	module: {
 		rules: [
 			{
-				test: /\.(scss|css)$/,
-				use: [
-					'css-loader',
-					{
-						loader: 'postcss-loader',
-						options: {
-							sourceMap: true,
-						},
-					},
-					'sass-loader',
-				],
+				test: /\.((c|sa|sc)ss)$/i,
+				use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
 			},
 			{
-				test: /\.(pug|jade)$/,
-				use: [
-					{
-						loader: 'html-loader',
-						options: {
-							// Webpack use CommonJS module
-							esModule: false,
-							// sources: {
-							// 	// ignore not exists sources
-							// 	urlFilter: (attribute, value) => path.isAbsolute(value) && fs.existsSync(value),
-							// },
-						},
-					},
-					{
-						loader: pugPlugin.loader,
-						options: {
-							method: 'html',
-						},
-					},
-				],
-			},
-			{
-				test: /\.(png|jpg|jpeg|ico)/,
+				test: /\.(png|jpg|jpeg|ico|svg)$/i,
 				type: 'asset/resource',
 				generator: {
 					// output filename for images
-					filename: 'assets/img/[name].[hash:8][ext]',
+					filename: 'assets/img/[name].[ext]',
 				},
 			},
 			{
-				test: /\.(woff|woff2|eot|ttf|otf|svg)$/i,
+				test: /\.(woff|woff2|eot|ttf|otf)$/i,
 				type: 'asset/resource',
 				generator: {
 					// output filename for fonts
-					filename: 'assets/fonts/[name][ext][query]',
+					filename: 'fonts/[name][ext][query]',
 				},
 			},
 			{
-				test: /\.m?js$/,
-				exclude: /(node_modules|bower_components)/,
+				test: /\.js$/,
+				exclude: /node_modules/,
 				use: {
-					loader: 'babel-loader',
+					loader: "babel-loader",
 					options: {
-						presets: ['@babel/preset-env'],
-					},
-				},
-			},
+					  presets: ["@babel/preset-env"]
+					}
+				  }
+			  },
 		],
 	},
+	resolve: {
+		alias: {
+			handlebars: 'handlebars/dist/handlebars.js',
+		},
+	},
+	plugins: [
+		new HTMLWebpackPlugin({
+			filename: 'index.html',
+			template: './src/index.html',
+		}),
+		new MiniCssExtractPlugin({
+			filename: '[name].[hash].css',
+		}),
+		new FaviconWebpackPlugin({
+			logo: './src/assets/favicon/NuntiumFavicon.svg',
+			publicPath: './assets/img/',
+			outputPath: './assets/img/',
+			prefix: '',
+			inject: true
+		}),
+		new CleanWebpackPlugin(),
+	],
 	optimization: {
-		minimizer: [
-			new CssMinimizerPlugin(),
-			new ImageMinimizerPlugin({
-				minimizer: {
-					implementation: ImageMinimizerPlugin.squooshMinify,
-					options: {
-						encodeOptions: {
-							mozjpeg: {
-								// That setting might be close to lossless, but it’s not guaranteed
-								// https://github.com/GoogleChromeLabs/squoosh/issues/85
-								quality: 100,
-							},
-							webp: {
-								lossless: 1,
-							},
-							avif: {
-								// https://github.com/GoogleChromeLabs/squoosh/blob/dev/codecs/avif/enc/README.md
-								cqLevel: 0,
-							},
-						},
-					},
-				},
-			}),
-		],
+		usedExports: true,
 	},
 };

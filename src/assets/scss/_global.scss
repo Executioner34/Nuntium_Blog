@@ -1,0 +1,60 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+	width: 100%;
+	background: #FFFFFF;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+body {
+	max-width: 1920px;
+	margin: 0 auto;
+	padding: 31px 25px;
+}
+
+header {
+	margin-bottom: 43px;
+}
+
+h1 {
+    @include titleFont;
+    font-size: calcFluidFontSize(24, 42, 480, 1366, )
+}
+
+h2 {
+    @include titleFont;
+    font-size: calcFluidFontSize(24, 42, 480, 1366, );
+    line-height: 133%
+}
+
+h3 {
+    @include titleFont;
+    line-height: 124%;
+}
+
+h4 {
+    @include textFont;
+    font-size: calcFluidFontSize(12, 20, 480, 1366);
+    line-height: 130%;
+    color: rgba(28, 28, 28, 0.5);
+}
+
+p {
+    @include textFont;
+    font-size: calcFluidFontSize(14, 16, 480, 1366);
+    line-height: 150%;
+    margin: 0
+}
+
+span {
+    @include textFont;
+    font-size: calcFluidFontSize(12, 16, 480, 1366);
+    line-height: 130%;
+    color: rgba(28, 28, 28, 0.5);
+}
+
+a {
+    text-decoration: none;
+}

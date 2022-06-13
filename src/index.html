@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Nuntium.</title>
+	</head>
+	<body>
+		<header class="header" id="header"></header>
+		<main class="main" id="main"></main>
+		<script type="text/template" id="headerTemplate">
+			  <div class="header__wrapper">
+			    <a class="header__link" href="/">
+			        <div class="header__logo"></div>
+			    </a>
+			    <nav class="header__nav">
+			        <ul class="nav__list js-nav__list">
+			            <li class="nav__item">
+			                <a class="nav__link" href="/">Home</a>
+			            </li>
+			            <li class="nav__item">
+			                <a class="nav__link" href="/blog">Blog</a>
+			            </li>
+			            <li class="nav__item">
+			                <a class="nav__link" href="/about">About</a>
+			            </li>
+			        </ul>
+			    </nav>
+			</div>
+		</script>
+		<script type="text/template" id="homeTemplate">
+			<section class="banner banner__img" style='background-image: url({{bannerData.image}})'>
+			    <div class="banner__content js-banner__content">
+			        <div class="banner__title">
+			            <h4 class="title__category-text">{{bannerData.tag}}</h4>
+			            <a href="/blog/article/{{bannerData.id}}" class="title__link">
+			                <h3 class="title__text">{{bannerData.title}}</h3>
+			            </a>
+			            <div class="title__subtitle">
+			              <span class="subtitle__autor">{{bannerData.author}}</span>
+			              <div class="subtitle__elipse"></div>
+			              <span class="subtitle__date">{{bannerData.createdAt}}</span>
+			              <span class="subtitle__time-read">({{bannerData.readTime}} read)</span>
+			            </div>
+			        </div>
+			    </div>
+			  </section>
+			  <section class="articles">
+			    <h2 class="articles__title">Editor’s Picks</h2>
+			    <hr class="articles__hr">
+			    <div class="articles__list">
+			        {{#each articlesData}}
+			            <article class="articles__item">
+			                <a href="/blog/article/{{id}}" class="item__link">
+			                    <div class="item__img" style='background-image: url({{image}})'></div>
+			                </a>
+			                <div class="item__content js-item__content">
+			                    <div class="banner__title">
+			                        <h4 class="title__category-text">{{tag}}</h4>
+			                        <a href="/blog/article/{{id}}" class="title__link">
+			                            <h3 class="title__text">{{title}}</h3>
+			                        </a>
+			                        <div class="title__subtitle">
+			                            <span class="subtitle__autor">{{author}}</span>
+			                            <div class="subtitle__elipse"></div>
+			                            <span class="subtitle__date">{{createdAt}}</span>
+			                            <span class="subtitle__time-read">({{readTime}} read)</a>
+			                        </div>
+			                    </div>
+			                </div>
+			            </article>
+			        {{/each}}
+			    </div>
+			</section>
+			<section class="featured featured__img" style='background-image: url({{featuredData.image}})'>
+			    <div class="featured__content js-featured__content">
+			        <div class="featured__title">
+			            <h4 class="title__category-text">{{featuredData.tag}}</h4>
+			            <a href="/blog/article/{{featuredData.id}}" class="title__link">
+			                <h3 class="title__text">{{featuredData.title}}</h3>
+			            </a>
+			            <div class="title__subtitle">
+			                <span class="subtitle__autor">{{featuredData.author}}</span>
+			                <div class="subtitle__elipse"></div>
+			                <span class="subtitle__date">{{featuredData.createdAt}}</span>
+			                <span class="subtitle__time-read">({{featuredData.readTime}} read)</a>
+			            </div>
+			        </div>
+			        <p class="featured__text">{{featuredData.description}}</p>
+			    </div>
+			    </section>
+		</script>
+		<script type="text/template" id="blogTemplate">
+			<section class="banner banner__img" style='background-image: url({{bannerData.image}})'>
+			    <div class="banner__content js-banner__content">
+			        <div class="banner__title">
+			            <h4 class="title__category-text">{{bannerData.tag}}</h4>
+			            <a href="/blog/article/{{bannerData.id}}" class="title__link">
+			                <h3 class="title__text">{{bannerData.title}}</h3>
+			            </a>
+			            <div class="title__subtitle">
+			                <span class="subtitle__autor">{{bannerData.author}}</span>
+			                <div class="subtitle__elipse"></div>
+			                <span class="subtitle__date">{{bannerData.createdAt}}</span>
+			                <span class="subtitle__time-read">({{bannerData.readTime}} read)</a>
+			            </div>
+			        </div>
+			    </div>
+			    </section>
+			    <section class="articles">
+			        <h2 class="articles__title">Editor’s Picks</h2>
+			        <hr class="articles__hr">
+			        <div class="articles__list js-articles__list">
+			            {{#each articlesData}}
+			                <article class="articles__item">
+			                    <a href="/blog/article/{{id}}                                                                                                                                   " class="item__link">
+			                        <div class="item__img" style='background-image: url({{image}})'></div>
+			                    </a>
+			                    <div class="item__content js-item__content">
+			                        <div class="banner__title">
+			                            <h4 class="title__category-text">{{tag}}</h4>
+			                            <a href="/blog/article/{{id}}" class="title__link">
+			                                <h3 class="title__text">{{title}}</h3>
+			                            </a>
+			                            <div class="title__subtitle">
+			                                <span class="subtitle__autor">{{author}}</span>
+			                                <div class="subtitle__elipse"></div>
+			                                <span class="subtitle__date">{{createdAt}}</span>
+			                                <span class="subtitle__time-read">({{readTime}} read)</a>
+			                            </div>
+			                        </div>
+			                    </div>
+			                </article>
+			            {{/each}}
+			        </div>
+			    </section>
+		</script>
+		<script type="text/template" id="aboutTemplate">
+			<section class='content'>
+				<h1 class="content__title">{{about.title}}</h1>
+				<div class="content__text js-content__text"></div>
+			</section>
+		</script>
+		<script type="text/template" id="articlesTemplate">
+			{{#each .}}
+			    <article class="articles__item">
+			        <a href="/blog/article/{{id}}                                                                                                                                   " class="item__link">
+			            <div class="item__img" style='background-image: url({{image}})'></div>
+			        </a>
+			        <div class="item__content js-item__content">
+			            <div class="banner__title">
+			                <h4 class="title__category-text">{{tag}}</h4>
+			                <a href="/blog/article/{{id}}" class="title__link">
+			                    <h3 class="title__text">{{title}}</h3>
+			                </a>
+			                <div class="title__subtitle">
+			                    <span class="subtitle__autor">{{author}}</span>
+			                    <div class="subtitle__elipse"></div>
+			                    <span class="subtitle__date">{{createdAt}}</span>
+			                    <span class="subtitle__time-read">({{readTime}} read)</a>
+			                </div>
+			            </div>
+			        </div>
+			    </article>
+			{{/each}}
+		</script>
+		<script type="text/template" id="articleTemplate">
+			<section class='article'>
+				<div class="article__img" style='background-image: url({{image}})'></div>
+				<div class="article__text-content">
+					<div class="text-content__title">
+						<h1 class="title__text">{{title}}.</h1>
+						<div class="title__subtitle">
+							<span class="subtitle__autor">{{author.name}}</span>
+							<div class="subtitle__elipse"></div>
+							<span class="subtitle__date">{{createdAt}}</span>
+							<span class="subtitle__time-read">({{readTime}} read)</span>
+							<span class='subtitle__tag'>#{{tag.name}}</span>
+						</div>
+					</div>
+					<div class="text-content__text js-text-content__text"></div>
+				</div>
+				<div class="article__author">
+					<h4 class="author__about">ABOUT THE AUTHOR</h4>
+					<div class="author__content">
+						<div class="author__avatar">
+						</div>
+						<div class="author__text">
+							<h3 class="author__name">{{author.name}}
+								<span class="author__nickname">@{{author.nick}}</span>
+							</h3>
+							<p class="author__description">{{author.about}}</p>
+						</div>
+					</div>
+				</div>
+				<div class="article__pagination">
+					<div class="pagination__prev js-pagination__prev">
+						<a href="/blog/article/{{prevId}}" class="pagination__link">
+							<div class="pagination__box"></div>
+						</a>
+						<p class="pagination__text">
+							Go back: <a href="/blog/article/{{prevId}}" class="text__link">{{prevTitleArticle}}</a>
+						</p>
+					</div>
+					<div class="pagination__next js-pagination__next">
+						<a href="/blog/article/{{nextId}}" class="pagination__link">
+							<div class="pagination__box"></div>
+						</a>
+						<p class="pagination__text">
+							Next up: <a href="/blog/article/{{nextId}}" class="text__link">{{nextTitleArticle}}</a>
+						</p>
+					</div>
+				</div>
+			</section>
+		</script>
+	</body>
+</html>
