@@ -1,3 +1,5 @@
+@import '../../assets/scss/variebles';
+
 .content {
     margin: 0 auto;
     margin-top: 11%;
@@ -5,16 +7,38 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    @media screen and (max-width: $lg) and (min-width: $xs) {
+        width: 100%;
+        margin-top: 43px;
+        padding-left: 23px;
+        padding-right: 23px;
+    }
+    @media screen and (max-width: $sm) {
+        padding: 0;
+    }
     &__title {
         margin: 0;
     }
     &__text {
         margin-top: 32px;
+        @media screen and (max-width: $lg) and (min-width: $xs) {
+            margin-top: 52px;
+        }
         p:first-child {
             display: flex;
             justify-content: space-around;
             img {
+                width: 36.1%;
+                height: 296px;
                 margin-left: 38px;
+                @media screen and (max-width: $xl) and (min-width: $sm) {
+                    width: 43%;
+                    height: min-content;
+                    margin-left: 18px;
+                }
+                @media screen and (max-width: $sm) {
+                    display: none;
+                }
             }
         }
         p:last-child {

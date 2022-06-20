@@ -3,7 +3,7 @@
         "module": "commonjs",
         "baseUrl": "./",
         "target": "es6",
-        "checkJs": true,
+        "checkJs": false,
         "paths": {
             "src/*": ["./src/*"]
         }

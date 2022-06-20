@@ -19,10 +19,14 @@ module.exports = {
 		devMiddleware: {
 			writeToDisk: true,
 		},
+		historyApiFallback: true,
 		open: true,
 		hot: true,
 		port: 3000,
 		
+	},
+	cache: {
+		type: 'filesystem',
 	},
 	module: {
 		rules: [
@@ -52,7 +56,9 @@ module.exports = {
 				use: {
 					loader: "babel-loader",
 					options: {
-					  presets: ["@babel/preset-env"]
+					  cacheDirectory: true,
+					  presets: ["@babel/preset-env"],
+					  plugins: ['@babel/plugin-transform-runtime']
 					}
 				  }
 			  },
@@ -62,6 +68,9 @@ module.exports = {
 		alias: {
 			handlebars: 'handlebars/dist/handlebars.js',
 		},
+		fallback: {
+			page: require.resolve('page')
+		}
 	},
 	plugins: [
 		new HTMLWebpackPlugin({

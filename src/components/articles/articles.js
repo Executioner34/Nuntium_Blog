@@ -15,7 +15,7 @@ export default class Articles {
     const htmlList = dataArr.map((data) => data.description);
     this.artilclesElemList = document.querySelectorAll('.js-item__content');
     for (let i = 0; i < htmlList.length; i += 1) {
-      View.addText(this.artilclesElemList[start + i], htmlList[i], '.item__text');
+      View.addText(this.artilclesElemList[start + i], htmlList[i], 'item__text');
     }
   }
 }

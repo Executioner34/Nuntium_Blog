@@ -1,7 +1,11 @@
 @import '../../assets/scss/mixins';
+@import '../../assets/scss/variebles';
 
 .header__wrapper {
     display: flex;
+    @media screen and (max-width: $xl) and (min-width: $sm) {
+        justify-content: space-between;
+    }
     .header__link {
         text-decoration: none;
     }
@@ -31,11 +35,15 @@
         }
     }
     .header__nav {
+        @media screen and (max-width: $sm) {
+            display: none;
+        }
     }
 }
 
 .nav__list {
     display: flex;
+    padding: 0;
     .nav__item {
         margin-right: 21px;
         list-style-type: none;

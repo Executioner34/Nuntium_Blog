@@ -3,7 +3,7 @@
 @mixin titleFont {
     font-family: 'Libre Baskerville';
     font-weight: 700;
-    font-size: calcFluidFontSize(18, 33, 480, 1366, );
+    font-size: calcFluidFontSize(18, 33, 320, 1366, );
     color: #000000;
     line-height: 150%;
 }
@@ -11,7 +11,7 @@
 @mixin textFont {
     font-family: 'Open Sans';
     font-weight: 400;
-    font-size: calcFluidFontSize(14, 16, 480, 1366, );
+    font-size: calcFluidFontSize(14, 16, 320, 1366, );
     color: #000000;
     line-height: 150%;
 }

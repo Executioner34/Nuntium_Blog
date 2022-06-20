@@ -1,5 +1,11 @@
+@import '../../assets/scss/variebles';
+
 .featured {
     margin-top: 75px;
+    position: relative;
+    @media screen and (max-width: $sm) {
+        margin-top: 30px;
+    }
     &__img {
         width: 100%;
         height: 592px;
@@ -7,13 +13,20 @@
         background-position: center center;
         background-size: 100% auto;
         z-index: 1;
+        @media screen and (max-width: $md) and (min-width: $sm) {
+            background-position: center top;
+            background-size: cover;
+        }
+        @media screen and (max-width: $sm) {
+            display: none;
+        }
     }
 
     &__content {
         box-sizing: border-box;
         width: 38.6%;
         height: 88%;
-        position: relative;
+        position: absolute;
         top: calc((100% - 88% )/ 2);
         left: calc(100% - 38.6% - 78px);
         z-index: 2;
@@ -22,9 +35,26 @@
         justify-content: center;
         padding: 0 40px;
         background-color: #FFFFFF;
+        @media screen and (max-width: $lg) and (min-width: $sm) {
+            width: 52%;
+            height: min-content;
+            padding: 22px;
+            left: 45px;
+            top: 0;
+        }
+        @media screen and (max-width: $sm) {
+            width: 100%;
+            height: min-content;
+            position: static;
+            padding: 0;
+        }
     }
 
     &__text {
         margin-top: 14px;
+        @media screen and (max-width: $md) {
+            margin-top: 8px;
+            line-height: 171%;
+        }
     }
 }

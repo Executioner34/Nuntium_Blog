@@ -1,3 +1,5 @@
+@import './variebles';
+
 * {
     box-sizing: border-box;
 }
@@ -25,7 +27,7 @@ h1 {
 
 h2 {
     @include titleFont;
-    font-size: calcFluidFontSize(24, 42, 480, 1366, );
+    font-size: calcFluidFontSize(24, 42, 576, 1366, );
     line-height: 133%
 }
 
@@ -36,21 +38,21 @@ h3 {
 
 h4 {
     @include textFont;
-    font-size: calcFluidFontSize(12, 20, 480, 1366);
+    font-size: calcFluidFontSize(12, 20, 576, 1366);
     line-height: 130%;
     color: rgba(28, 28, 28, 0.5);
 }
 
 p {
     @include textFont;
-    font-size: calcFluidFontSize(14, 16, 480, 1366);
+    font-size: calcFluidFontSize(14, 16, 576, 1366);
     line-height: 150%;
     margin: 0
 }
 
 span {
     @include textFont;
-    font-size: calcFluidFontSize(12, 16, 480, 1366);
+    font-size: calcFluidFontSize(12, 16, 576, 1366);
     line-height: 130%;
     color: rgba(28, 28, 28, 0.5);
 }

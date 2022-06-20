@@ -30,7 +30,8 @@
 			</div>
 		</script>
 		<script type="text/template" id="homeTemplate">
-			<section class="banner banner__img" style='background-image: url({{bannerData.image}})'>
+			<section class="banner">
+				<div class="banner__img" style='background-image: url({{bannerData.image}})'></div>
 			    <div class="banner__content js-banner__content">
 			        <div class="banner__title">
 			            <h4 class="title__category-text">{{bannerData.tag}}</h4>
@@ -73,7 +74,8 @@
 			        {{/each}}
 			    </div>
 			</section>
-			<section class="featured featured__img" style='background-image: url({{featuredData.image}})'>
+			<section class="featured">
+				<div class="featured__img" style='background-image: url({{featuredData.image}})'></div>
 			    <div class="featured__content js-featured__content">
 			        <div class="featured__title">
 			            <h4 class="title__category-text">{{featuredData.tag}}</h4>
@@ -171,13 +173,14 @@
 				<div class="article__text-content">
 					<div class="text-content__title">
 						<h1 class="title__text">{{title}}.</h1>
-						<div class="title__subtitle">
+						<span class="title__subtitle">
 							<span class="subtitle__autor">{{author.name}}</span>
 							<div class="subtitle__elipse"></div>
 							<span class="subtitle__date">{{createdAt}}</span>
 							<span class="subtitle__time-read">({{readTime}} read)</span>
+							<br>
 							<span class='subtitle__tag'>#{{tag.name}}</span>
-						</div>
+						</span>
 					</div>
 					<div class="text-content__text js-text-content__text"></div>
 				</div>
@@ -192,6 +195,15 @@
 							</h3>
 							<p class="author__description">{{author.about}}</p>
 						</div>
+						
+					</div>
+					<div class="author__content author__content--mobile">
+						<div class="author__avatar">
+						</div>
+						<div class="author__text">
+							<h3 class="author__name">{{author.name}}</h3>
+						</div>
+						<p class="author__description">{{author.about}}</p>
 					</div>
 				</div>
 				<div class="article__pagination">

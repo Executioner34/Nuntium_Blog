@@ -1,5 +1,6 @@
-import page from 'page';
 import Controller from './Controller';
+
+const page = require('page');
 
 export default class Routes {
   constructor() {
