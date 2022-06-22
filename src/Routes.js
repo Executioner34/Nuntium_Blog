@@ -39,6 +39,11 @@ export default class Routes {
       this.Controller.showArticle,
     );
 
+    page.redirect('/Nuntium_Blog/', '/');
+    page.redirect('/Nuntium_Blog/about', '/about');
+    page.redirect('/Nuntium_Blog/blog', '/blog');
+    page.redirect('/Nuntium_Blog/blog/article/:id', '/blog/article/:id');
+
     page();
   }
 }
