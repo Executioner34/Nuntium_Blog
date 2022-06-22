@@ -8,6 +8,8 @@ import Article from './pages/Article/Article';
 import getMinutes from './assets/functions/getMinutes';
 import setDate from './assets/functions/setDate';
 import getTitleArticle from './assets/functions/getTitleArticle';
+import addMetaSEO from './assets/functions/addMetaSEO';
+import deleteMetaSEO from './assets/functions/deleteMetaSEO';
 
 export default class Controller {
   constructor() {
@@ -29,6 +31,8 @@ export default class Controller {
   async aboutRoute(ctx, next) {
     const about = await this.Model.getAboutData();
     ctx.state.about = about;
+    deleteMetaSEO();
+    addMetaSEO(about.seo);
     ctx.save();
     next();
   }
@@ -40,6 +44,7 @@ export default class Controller {
     blogFeatured = Controller.fixDataFeatured(blogFeatured);
     ctx.state.articles = blogArticles;
     ctx.state.featured = blogFeatured;
+    deleteMetaSEO();
     ctx.save();
     next();
   }
@@ -48,6 +53,7 @@ export default class Controller {
     const blogArticles = await this.Model.getArticlesData();
     blogArticles.map((data) => Controller.fixData(data));
     ctx.state.articles = blogArticles;
+    deleteMetaSEO();
     ctx.save();
     next();
   }
@@ -64,6 +70,12 @@ export default class Controller {
       blogArticleId.nextTitleArticle = getTitleArticle(nextArticle);
     }
     ctx.state.articlesId = blogArticleId;
+    deleteMetaSEO();
+    addMetaSEO({
+      title: blogArticleId.seo.title,
+      description: blogArticleId.seo.description,
+      keywords: blogArticleId.seo.keywords,
+    });
     ctx.save();
     next();
   }
