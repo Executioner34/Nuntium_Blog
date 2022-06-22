@@ -16,6 +16,10 @@ body {
 	padding: 31px 25px;
 }
 
+body.noscroll {
+    overflow: hidden;
+}
+
 header {
 	margin-bottom: 43px;
 }
