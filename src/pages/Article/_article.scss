@@ -37,19 +37,19 @@
         }
         .title__subtitle {
             margin-top: 17px;
-            width: 55%;
-            justify-content: center;
-            @media screen and (max-width: $xl) and (min-width: $md) {
-                width: 325px;
-            }
-            @media screen and (max-width: $md) and (min-width: $sm) {
-                width: 295px;
-            }
+            display: grid;
+            grid-template-columns: 1fr min-content 1fr 1fr;
+            justify-items: start;
             @media screen and (max-width: $sm) {
                 display: none;
             }
+            .subtitle__autor {
+                justify-self: end;
+            }
             .subtitle__tag {
                 margin-top: 13px;
+                justify-self: center;
+                grid-column: 1/5;
             }
         }
         .text-content__text {
